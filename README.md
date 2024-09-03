@@ -1,5 +1,9 @@
 # semantic-release-helm-oci
 
+> [!WARNING]
+> This project is in deprecation mode and needs a mantainer.
+> Please check https://github.com/eshepelyuk/semantic-release-helm-oci/issues/9
+ 
 [semantic-release](https://github.com/semantic-release/semantic-release) plugin
 for publishing Helm charts to OCI compatible registries.
 
@@ -50,7 +54,7 @@ and `${CHART_VERSION}` is a version detected by semantic-release.
 
 ### `version` and `appVersion` in Chart.yaml
 
-Plugin intentionally doesn't modify Chart.yaml during the release.
+Plugin intentionally doesn't modify `Chart.yaml` during the release.
 It's recommended to use Git tags for maintaining release versions.
 
 The plugin leverages `--version` and `--app-version` when calling `helm package`
@@ -66,8 +70,8 @@ There's two usage scenarios for this plugin:
 1. The chart is maintained separately from the application.
 
     In this case `appVersion` is modified outside of chart's release process
-    and must be updated manually in Chart.yaml. To prevent plugin from setting `--app-version` -
-    use `skipAppVersion` option.
+    and must be updated manually in `Chart.yaml`.
+    To prevent plugin from setting `--app-version` - use `skipAppVersion` option.
 
 ## Configuration
 
@@ -85,5 +89,5 @@ Credentials for OCI registry authentication are passed through environment varia
 | Option            | Description                                                       | Type      | Default   |
 | ------------------|-------------------------------------------------------------------|-----------|-----------|
 | `registry`        | **Required.** Registry URL with `oci://` schema,<br>e.g. `oci://ghcr.io/eshepelyuk/abc`.                      | string    | undefined |
-| `skipAppVersion`  | Use `appVersion` from Chart.yaml when packaging chart, instead of using **semantic-release** `nextVersion` | boolean   | false     |
-
+| `skipAppVersion`  | Use `appVersion` from `Chart.yaml` when packaging chart, instead of using **semantic-release** `nextVersion`  | boolean   | false     |
+| `chartPath`       | Directory, where `Chart.yaml` is located.                                                                     | string    | `.`       |
